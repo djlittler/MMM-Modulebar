@@ -12,36 +12,36 @@
 //var request = require('request');
 
 Module.register("MMM-Modulebar",{
-	
+
 	requiresVersion: "2.1.0",
-	
-    defaults: {
-        // Allow the module to force modules to be shown (if hidden and locked by another module ex. profile-switcher).
-        allowForce: false,
-        // Determines if the border around the buttons should be shown.
-        showBorder: true,
-        // The minimum width for all the buttons.
-        minWidth: "0px",
-        // The minimum height for all the buttons.
-        minHeight: "0px",
-        // The location of the symbol relative to the text. Options: left, right, top or bottom
-        picturePlacement: "left",
-        // The direction of the bar. Options: row, column, row-reverse or column-reverse
-        direction: "row",
+
+  defaults: {
+    // Allow the module to force modules to be shown (if hidden and locked by another module ex. profile-switcher).
+    allowForce: false,
+    // Determines if the border around the buttons should be shown.
+    showBorder: true,
+    // The minimum width for all the buttons.
+    minWidth: "0px",
+    // The minimum height for all the buttons.
+    minHeight: "0px",
+    // The location of the symbol relative to the text. Options: left, right, top or bottom
+    picturePlacement: "left",
+    // The direction of the bar. Options: row, column, row-reverse or column-reverse
+    direction: "row",
 		// The speed of the hide and show animation.
 		animationSpeed: 1000,
-        // The default button 1. Add your buttons in the config.
+    // The default button 1. Add your buttons in the config.
 		buttons: {
-            "1": {
-				// The modules exact name to be affected.
+      "1": {
+			// The modules exact name to be affected.
 				module: "clock",
-				// The text to be displayed in the button.
+			// The text to be displayed in the button.
 				text:	"Clock",
-				// Then symbol from font-awesome!
-                symbol: "clock-o"
-            }
+			// Then symbol from font-awesome!
+      	symbol: "clock-o"
+    	}
 		}
-    },
+  },
 
     // Define required styles.
 	getStyles: function(){
@@ -49,18 +49,17 @@ Module.register("MMM-Modulebar",{
 	},
 
     // Override dom generator.
-    getDom: function() {
-        var menu = document.createElement("span");
-        menu.className = "modulebar-menu";
-        menu.id = this.identifier + "_menu";
-        menu.style.flexDirection = this.config.direction;
-		// Sends each button to the "createButton" function be created.
-		for (var num in this.config.buttons) {
-			menu.appendChild(this.createButton(this, num, this.config.buttons[num], this.config.picturePlacement));
-        }
-
-        return menu;
-    },
+  getDom: function() {
+    var menu = document.createElement("span");
+    menu.className = "modulebar-menu";
+    menu.id = this.identifier + "_menu";
+    menu.style.flexDirection = this.config.direction;
+	// Sends each button to the "createButton" function be created.
+	for (var num in this.config.buttons) {
+		menu.appendChild(this.createButton(this, num, this.config.buttons[num], this.config.picturePlacement));
+    }
+		return menu;
+  },
 
 	// Creates the buttons.
     createButton: function (self, num, data, placement) {
@@ -88,7 +87,7 @@ Module.register("MMM-Modulebar",{
 						// If it's an array, check what numbers are in it.
 						var idnumber = data.idnum.find(function(element) {
 							// Number of the module is found in the array.
-							return element == idnr[1]; 
+							return element == idnr[1];
 						});
 					// If idnum is not an array.
 					} else {
@@ -108,12 +107,12 @@ Module.register("MMM-Modulebar",{
 							}
 							// Shows the module.
 							modules[i].show(self.config.animationSpeed, {force: self.config.allowForce});
-							// Prints in the console what just happend (adding the ID). 
+							// Prints in the console what just happend (adding the ID).
 							console.log("Showing "+modules[i].name+" ID: "+idnr[1]);
 						}else{
 							// Hides the module.
 							modules[i].hide(self.config.animationSpeed, {force: self.config.allowForce});
-							// Prints in the console what just happend (adding the ID). 
+							// Prints in the console what just happend (adding the ID).
 							console.log("Hiding "+modules[i].name+" ID: "+idnr[1]);
 							// Check if there is a "hideURL" defined.
 							if (data.hideUrl != null) {
@@ -184,6 +183,4 @@ Module.register("MMM-Modulebar",{
 		// All done. :)
         return item;
     }
-});	
-
-
+});
