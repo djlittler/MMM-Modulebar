@@ -61,15 +61,14 @@ Module.register("MMM-Modulebar",{
 		}
 	},
 
-  updateButtons: function(page_modules) {
-
-	for (var modulename in page_modules)
-		for (var buttonnum in this.config.button.[buttonnum].s) {
-				 = this.config.buttons[num][]
-				buttonname =
-	    }
-		}
-	},
+  // updateButtons: function(page_modules) {
+	// for (var modulename in page_modules) {
+	// 		for (var buttonnum in this.config.button.[buttonnum].s) {
+	// 				 = this.config.buttons[num][]
+	// 				buttonname =
+	// 	    }
+	// 		}
+	// },
 
     // Override dom generator.
   getDom: function() {
