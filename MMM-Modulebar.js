@@ -48,6 +48,29 @@ Module.register("MMM-Modulebar",{
 		return ["font-awesome.css", "MMM-Modulebar.css"];
 	},
 
+  notificationReceived: function (notification, payload) {
+    switch (notification) {
+      case 'PAGE_MODULES':
+        Log.log('[Modulebar]: received a notification '
+          + `to update modulebar to show ${payload} of type ${typeof payload}`);
+        //this.curPage = payload;
+        //self.sendNotification('PAGE_MODULES', i);
+        this.updateButtons(payload);
+        break;
+      default: // Do nothing
+		}
+	},
+
+  updateButtons: function(page_modules) {
+
+	for (var modulename in page_modules)
+		for (var buttonnum in this.config.button.[buttonnum].s) {
+				 = this.config.buttons[num][]
+				buttonname =
+	    }
+		}
+	},
+
     // Override dom generator.
   getDom: function() {
     var menu = document.createElement("span");
